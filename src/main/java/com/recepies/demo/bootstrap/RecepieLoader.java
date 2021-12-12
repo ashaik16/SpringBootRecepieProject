@@ -23,6 +23,7 @@ public class RecepieLoader implements CommandLineRunner {
 	}
 
 	private void loadTodos() {
+		if (recepieRepository.count() == 0) {
 		List<String> ingredientsList1 = new ArrayList<String>();
 		ingredientsList1.add("1 tsp oil");
 		ingredientsList1.add("2 eggs");
@@ -35,7 +36,7 @@ public class RecepieLoader implements CommandLineRunner {
 		instructionsList1.add("Add eggs to pan when hot");
 		instructionsList1.add("Salt to taste and enjoy");
 
-		if (recepieRepository.count() == 0) {
+
 			recepieRepository.save(Recepie.builder().name("scrambledEggs").ingredients(ingredientsList1)
 					.instructions(instructionsList1).build());
 
